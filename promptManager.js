@@ -1,16 +1,30 @@
 const makeDir = require('make-dir');
 const fs = require('fs')
+const path = require('path')
 
 module.exports= {
-    async createDir(file, path){
-        const dir = await makeDir(path)
-        console.log(dir)
-        //const callback = await this.moveFile(file)    
+    ABSOLUTE_PATH: path.resolve(''),
 
-        //=> '/Users/sindresorhus/fun/unicorn/rainbow/cake'
+    files: [],
+    indexFiles: [],
+
+    readFiles(){
+        this.files = fs.readdirSync(this.ABSOLUTE_PATH).filter(fileName => {
+            return path.extname(fileName) === '.jpeg' || path.extname(fileName) === '.jpg' 
+        })
     },
 
-    async moveFile(file){
+    getIndexFiles(){
+        this.indexFiles = this.files.map(element => {
+            let pathFile = element.split('.')[0].split('-')[1]
+            return pathFile
+        })
+    },
 
-    }
+    async doTheJoob(){
+        for(index in this.files){
+            await makeDir(this.indexFiles[index])
+            await fs.renameSync(this.files[index], this.indexFiles[index] + '/' + this.files[index])
+        }
+    },
 }
