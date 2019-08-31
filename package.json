@@ -10,5 +10,14 @@
     "make-dir": "^3.0.0",
     "mkdirp": "^0.5.1",
     "path": "^0.12.7"
+  },
+  "bin": "index.js",
+  "pkg": {
+    "assets": [
+      "view/**/*"
+    ],
+    "target": [
+      "node7"
+    ]
   }
 }

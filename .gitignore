@@ -1,2 +1,6 @@
 node_modules
 teste
+
+// .exe para linux e para mac
+FileManipulator-linux
+FileManipulator-macos
