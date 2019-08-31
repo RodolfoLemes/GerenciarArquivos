@@ -1,0 +1,14 @@
+{
+  "name": "FileManipulator",
+  "version": "1.0.0",
+  "description": "Manipulação de arquivos para organiza-los",
+  "main": "index.js",
+  "author": "Rodolfo Lemes",
+  "license": "MIT",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "make-dir": "^3.0.0",
+    "mkdirp": "^0.5.1",
+    "path": "^0.12.7"
+  }
+}
