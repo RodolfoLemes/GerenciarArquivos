@@ -7,14 +7,24 @@ module.exports= {
 
     files: [],
     indexFiles: [],
+    filesTypes: [],
 
     readFiles(){
         this.files = fs.readdirSync(this.ABSOLUTE_PATH).filter(fileName => {
-            return path.extname(fileName) === '.jpeg' || path.extname(fileName) === '.jpg' 
+            for(type of this.filesTypes){
+                if(path.extname(fileName) === type){
+                    return true
+                }
+            }
         })
+        if(this.files === []){
+            return false
+        } else {
+            return true
+        }
     },
 
-    getIndexFiles(){
+    makeIndexFiles(){
         this.indexFiles = this.files.map(element => {
             let pathFile = element.split('.')[0].split('-')[1]
             return pathFile
